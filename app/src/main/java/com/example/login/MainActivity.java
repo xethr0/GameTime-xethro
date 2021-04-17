@@ -1,4 +1,4 @@
-package com.example.gametimeproj;
+package com.example.login;
 
 import android.os.Bundle;
 
@@ -9,11 +9,9 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-import com.example.gametimeproj.ui.main.SectionsPagerAdapter;
+import com.example.login.ui.main.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.gametimeproj.ui.main;
+package com.example.login.ui.main;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

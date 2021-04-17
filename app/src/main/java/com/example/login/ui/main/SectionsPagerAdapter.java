@@ -1,4 +1,4 @@
-package com.example.gametimeproj.ui.main;
+package com.example.login.ui.main;
 
 import android.content.Context;
 
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.gametimeproj.R;
+import com.example.login.R;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
