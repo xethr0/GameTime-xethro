@@ -1,21 +1,62 @@
 package com.example.login;
 
-import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private TextView Exsisting;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        mAuth = FirebaseAuth.getInstance();
+        Exsisting = (TextView) findViewById(R.id.Loginlinks);
+
+
+        Exsisting.setOnClickListener(new  View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                SendUserToLogin();
             }
+        });
+
+
+
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null)
+        {
+            SendUserToLogin();
         }
 
+
+
+    }
+
+    private void SendUserToLogin()
+    {
+        Intent loginIntent = new Intent(MainActivity.this, Login.class);
+        startActivity(loginIntent);
+        finish();
+    }
+}

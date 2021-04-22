@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameTimeProj">
+        <activity android:name=".SportSelection"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".Login" />
         <activity
-            android:name="com.example.com.example.login.MainActivity"
+            android:name="com.example.login.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.GameTimeProj.NoActionBar">
             <intent-filter>

@@ -8,8 +8,7 @@
     android:backgroundTint="@color/cardview_shadow_end_color"
     android:backgroundTintMode="add"
     android:visibility="visible"
-    tools:context=".Register"
-    tools:targetApi="lollipop">
+    tools:context=".Register">
 
     <TextView
         android:id="@+id/Logo"
