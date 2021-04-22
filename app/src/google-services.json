@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790277306632",
+    "project_id": "gametime-fc3b5",
+    "storage_bucket": "gametime-fc3b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790277306632:android:9f9b3d189e0d2d2b9114bd",
+        "android_client_info": {
+          "package_name": "com.example.gametimelogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790277306632-mhe85b5m68jfe0rn82b9fdoimltgt9ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVSq-f3DQTFFdus0_12I41kx6BnqwDFtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790277306632-mhe85b5m68jfe0rn82b9fdoimltgt9ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
