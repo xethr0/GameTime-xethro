@@ -34,11 +34,11 @@ public class TabActivityMenu  extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition()==0) {
+                if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
-                }else  if (tab.getPosition()==0) {
+                } else if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
-                }else if (tab.getPosition()==0){
+                } else if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
                 }
             }
@@ -57,3 +57,4 @@ public class TabActivityMenu  extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+}
