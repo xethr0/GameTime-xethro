@@ -12,7 +12,7 @@ public class TabActivityMenu  extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TabItem profile, calendar, gameFeed;
-    public PageAdapter pageAdapter;
+    public com.example.sample.PageAdapter pageAdapter;
 
 // this is a test bro!
 
@@ -27,18 +27,18 @@ public class TabActivityMenu  extends AppCompatActivity {
         gameFeed = (TabItem) findViewById(R.id.gameFeed);
         viewPager = findViewById(R.id.viewpager);
 
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        pageAdapter = new com.example.sample.PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition()==0) {
+                if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
-                }else  if (tab.getPosition()==0) {
+                } else if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
-                }else if (tab.getPosition()==0){
+                } else if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
                 }
             }
@@ -57,3 +57,4 @@ public class TabActivityMenu  extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+}
