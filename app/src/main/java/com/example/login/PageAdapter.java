@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.login.Calendar;
+import com.example.login.GameFeed;
+import com.example.login.Profile;
+import com.example.login.SearchBar;
+
 public class PageAdapter extends FragmentPagerAdapter {
     private int numOfTabs;
 

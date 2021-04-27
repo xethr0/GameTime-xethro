@@ -11,10 +11,10 @@ import com.google.android.material.tabs.TabLayout;
 public class TabActivityMenu  extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private TabItem profile, calendar, gameFeed, ;
+    private TabItem profile, calendar, gameFeed;
     public PageAdapter pageAdapter;
 
-// thi
+// this is a test bro!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,4 +56,4 @@ public class TabActivityMenu  extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-    
+    }
