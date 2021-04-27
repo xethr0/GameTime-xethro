@@ -17,6 +17,4 @@
     <string name="create_a_profiles">create a profile</string>
     <string name="passwords">Password</string>
     <string name="create_your_profile">Create your profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
