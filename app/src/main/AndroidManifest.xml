@@ -12,6 +12,7 @@
         <activity android:name=".activity_search"></activity>
         <activity android:name=".SportSelection" />
         <activity android:name=".Register" />
+        <activity android:name=".TabActivityMenu" />
         <activity android:name=".Login" />
         <activity
             android:name=".MainActivity"
