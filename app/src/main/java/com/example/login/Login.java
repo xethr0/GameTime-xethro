@@ -35,13 +35,26 @@ public class Login extends AppCompatActivity
                 SendUserToRegister();
             }
         });
-
+        Loginbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            // login validation required
+            public void onClick(View v) {
+                SendUserToProfile();
+            }
+        });
 
     }
 
     private void SendUserToRegister()
     {
         Intent registerIntent = new Intent(Login.this, Register.class);
+        startActivity(registerIntent);
+
+    }
+
+    private void SendUserToProfile()
+    {
+        Intent registerIntent = new Intent(Login.this, TabActivityMenu.class);
         startActivity(registerIntent);
 
     }

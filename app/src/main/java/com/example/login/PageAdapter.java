@@ -1,11 +1,14 @@
-package com.example.sample;
+package com.example.login;
+
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.login.Calendar;
+import com.example.login.EventCalendar;
 import com.example.login.GameFeed;
 import com.example.login.Profile;
 import com.example.login.SearchBar;
@@ -20,14 +23,15 @@ public class PageAdapter extends FragmentPagerAdapter {
         this.numOfTabs= numOfTabs;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new Profile();
+                return new EventCalendar();
             case 1:
-                return new Calendar();
+                return new Profile();
             case 2:
                 return new GameFeed();
             case 3:
