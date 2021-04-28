@@ -3,12 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendar">
+    tools:context=".EventCalendar">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
 
+    <EditText
+        android:id="@+id/EventDate"
+        android:clickable="true"
+        android:cursorVisible="true"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:hint="Select Date"
+        android:layout_height="100dp"
+        android:layout_width="200dp" />
 </FrameLayout>
