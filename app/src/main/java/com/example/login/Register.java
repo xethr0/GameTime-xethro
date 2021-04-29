@@ -17,6 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
 
@@ -25,6 +29,9 @@ public class Register extends AppCompatActivity {
     private EditText Fullname, Password, Age, Email;
     private Button CreateProfile;
 
+    private DatabaseReference UserRef;
+
+    String currentuserid;
 
 
     @Override
@@ -33,6 +40,8 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        currentuserid = mAuth.getCurrentUser().getUid();
+        UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuserid);
 
         Fullname = (EditText) findViewById(R.id.FullName);
         Email = (EditText) findViewById(R.id.Email);
@@ -51,7 +60,6 @@ public class Register extends AppCompatActivity {
         });
 
 
-
         // this is the text view on the bottom to send the user if they already have a login
         Exsisting = (TextView) findViewById(R.id.Loginlinks);
         Exsisting.setOnClickListener(new  View.OnClickListener()
@@ -66,8 +74,10 @@ public class Register extends AppCompatActivity {
 
 
 
+
     }
 
+    // checks the users inputs and meats parameteres.
     private void CreateNewAccount()
     {
         String name = Fullname.getText().toString();
@@ -94,6 +104,18 @@ public class Register extends AppCompatActivity {
         }
         else
         {
+            HashMap userMap = new HashMap();
+            userMap.put("username", name );
+            userMap.put("age", age);
+            UserRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
+            {
+                @Override
+                public void onComplete(@NonNull Task task)
+                {
+
+                }
+            });
+
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>()
                     {
@@ -111,12 +133,11 @@ public class Register extends AppCompatActivity {
 
 
     }
-
+    //sends user to the sports tab
     private void SendUsertoSportSlection()
     {
         Intent sportselection = new Intent(Register.this, SportSelection.class);
         startActivity(sportselection);
-        finish();
     }
 
     @Override
