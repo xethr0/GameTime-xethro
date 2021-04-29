@@ -83,7 +83,7 @@ public class EventCalendar extends Fragment {
 
     };
     private void updateLabel() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "EEE, d MMM yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         _editText.setText(sdf.format(calendar.getTime()));
