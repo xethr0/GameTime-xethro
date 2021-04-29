@@ -43,8 +43,7 @@ public class Login extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                //SendUserToRegister(); uncomment when you fix the rest of your section
-                OpenProfileActivity();
+                SendUserToRegister(); // uncomment when you fix the rest of your section
             }
         });
 
