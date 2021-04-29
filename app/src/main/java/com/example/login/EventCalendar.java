@@ -14,11 +14,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -28,48 +35,21 @@ import java.util.Locale;
  * create an instance of this fragment.
  */
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class EventCalendar extends Fragment {
+public class EventCalendar extends Fragment implements AdapterView.OnItemClickListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     EditText _editText;
-    private int _day;
-    private int _month;
-    private int _birthYear;
-    private Context _context;
     Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
-
+    ListView eventList;
+    String[] events;
     public EventCalendar() {
         // Required empty public constructor
     }
 
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Calendar.
-     */
-    // TODO: Rename and change types and number of parameters
     public static EventCalendar newInstance(String param1, String param2) {
-        EventCalendar fragment = new EventCalendar();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+
+        return new EventCalendar();
     }
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -91,15 +71,8 @@ public class EventCalendar extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
 
     }
-
 
 
     @Override
@@ -107,8 +80,23 @@ public class EventCalendar extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
-
+        eventList  = view.findViewById(R.id.EventList);
         _editText = (EditText) view.findViewById(R.id.EventDate);
+        FloatingActionButton fab = view.findViewById(R.id.addEventButton);
+
+        events = new DateFormatSymbols().getMonths();
+
+        ArrayAdapter<String> eventAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,events);
+        eventList.setAdapter(eventAdapter);
+
+        eventList.setOnItemClickListener(this);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Create New Event", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         this._editText.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -122,5 +110,12 @@ public class EventCalendar extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String event  = parent.getItemAtPosition(position).toString();
+        Snackbar.make(view, event, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 }
