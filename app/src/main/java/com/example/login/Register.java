@@ -116,7 +116,6 @@ public class Register extends AppCompatActivity {
     {
         Intent sportselection = new Intent(Register.this, SportSelection.class);
         startActivity(sportselection);
-        finish();
     }
 
     @Override
