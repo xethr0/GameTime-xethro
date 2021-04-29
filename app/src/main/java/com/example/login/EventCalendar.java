@@ -3,6 +3,7 @@ package com.example.login;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.icu.util.TimeZone;
 import android.os.Build;
@@ -95,6 +96,8 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
             public void onClick(View view) {
                 Snackbar.make(view, "Create New Event", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent createNewEvent = new Intent(getActivity(), createEvent.class);
+                startActivity(createNewEvent);
             }
         });
 
