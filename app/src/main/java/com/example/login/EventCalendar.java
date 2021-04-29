@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
@@ -109,6 +111,14 @@ public class EventCalendar extends Fragment {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         _editText = (EditText) view.findViewById(R.id.EventDate);
+        FloatingActionButton fab = view.findViewById(R.id.addEventButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Create New Event", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         this._editText.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
