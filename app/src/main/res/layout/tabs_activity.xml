@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FF9800"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:tabIndicatorColor="#E40F0F"
-        app:tabTextColor="#E40F0F"
-        tools:layout_editor_absoluteX="-16dp">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calendar" />
+            android:background="#FF9800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tabIndicatorColor="#E40F0F"
+            app:tabTextColor="#E40F0F"
+            tools:layout_editor_absoluteX="-16dp">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Profile" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendar" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/gameFeed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Game Feed" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/searchBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/gameFeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game Feed" />
 
-    </com.google.android.material.tabs.TabLayout>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/searchBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search" />
+
+        </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
@@ -50,7 +53,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
-
     </androidx.viewpager.widget.ViewPager>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

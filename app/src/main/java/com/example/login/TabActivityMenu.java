@@ -35,15 +35,13 @@ public class TabActivityMenu  extends AppCompatActivity {
             {
                 viewPager.setCurrentItem(tab.getPosition());
 
-
-
-
-
                 if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 0) {
+                } else if (tab.getPosition() == 1) {
                     pageAdapter.notifyDataSetChanged();
-                } else if (tab.getPosition() == 0) {
+                } else if (tab.getPosition() == 2) {
+                    pageAdapter.notifyDataSetChanged();
+                } else if (tab.getPosition() == 3) {
                     pageAdapter.notifyDataSetChanged();
                 }
 
