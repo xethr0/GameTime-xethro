@@ -46,7 +46,7 @@ public class Register extends AppCompatActivity {
         Fullname = (EditText) findViewById(R.id.FullName);
         Email = (EditText) findViewById(R.id.Email);
         Password = (EditText) findViewById(R.id.Password);
-        Age = (EditText) findViewById(R.id.Age);
+       // Age = (EditText) findViewById(R.id.Age);
         CreateProfile = (Button) findViewById(R.id.Createme);
 
         // This is the button that creates the new account
