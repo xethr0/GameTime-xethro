@@ -18,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
         Exsisting = (TextView) findViewById(R.id.Loginlinks);
@@ -35,16 +36,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     @Override
     protected void onStart()
     {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
             SendUserToLogin();
 
 
