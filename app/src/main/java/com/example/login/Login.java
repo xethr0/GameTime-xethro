@@ -11,9 +11,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApi;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,10 +32,16 @@ public class Login extends AppCompatActivity
     private EditText userEmail, userPassword;
     private TextView NeednewAccountLink;
     private FirebaseAuth mAuth;
+    private ImageView google;
+
+    private static final int RC_SIGN_IN = 1;
+    private GoogleSignInClient mGoogleSignInClient;
+    private static final String TAG = "Login";
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -37,6 +50,7 @@ public class Login extends AppCompatActivity
         userEmail = (EditText) findViewById(R.id.Email);
         userPassword = (EditText) findViewById(R.id.Password);
         Loginbutton = (Button) findViewById(R.id.Login_button);
+        google = (ImageView) findViewById(R.id.GoogleLog);
 
         NeednewAccountLink.setOnClickListener(new  View.OnClickListener()
         {
@@ -56,9 +70,9 @@ public class Login extends AppCompatActivity
         });
 
 
-
-
     }
+
+
 
     private void SendUserToTab()
     {

@@ -26,7 +26,7 @@ public class Register extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private  TextView Exsisting;
-    private EditText Fullname, Password, Age, Email;
+    private EditText Fullname, Password, Email;
     private Button CreateProfile;
 
     private DatabaseReference UserRef;
@@ -46,7 +46,6 @@ public class Register extends AppCompatActivity {
         Fullname = (EditText) findViewById(R.id.FullName);
         Email = (EditText) findViewById(R.id.Email);
         Password = (EditText) findViewById(R.id.Password);
-       // Age = (EditText) findViewById(R.id.Age);
         CreateProfile = (Button) findViewById(R.id.Createme);
 
         // This is the button that creates the new account
@@ -81,7 +80,6 @@ public class Register extends AppCompatActivity {
     private void CreateNewAccount()
     {
         String name = Fullname.getText().toString();
-        String age = Age.getText().toString();
         String email = Email.getText().toString();
         String password = Password.getText().toString();
 
@@ -98,20 +96,16 @@ public class Register extends AppCompatActivity {
         {
             Toast.makeText(this, "Please wrtie your name...", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(age))
-        {
-            Toast.makeText(this, "Please write your age....", Toast.LENGTH_SHORT).show();
-        }
         else
         {
             HashMap userMap = new HashMap();
             userMap.put("username", name );
-            userMap.put("age", age);
             UserRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
             {
                 @Override
                 public void onComplete(@NonNull Task task)
                 {
+                    SendUsertoSportSlection();
 
                 }
             });
