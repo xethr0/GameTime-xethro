@@ -40,8 +40,12 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
-        currentuserid = mAuth.getCurrentUser().getUid();
-        UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuserid);
+        if(mAuth.getCurrentUser() != null){
+            currentuserid = mAuth.getCurrentUser().getUid();
+            UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentuserid);
+
+        }
+
 
         Fullname = (EditText) findViewById(R.id.FullName);
         Email = (EditText) findViewById(R.id.Email);
@@ -98,17 +102,17 @@ public class Register extends AppCompatActivity {
         }
         else
         {
-            HashMap userMap = new HashMap();
-            userMap.put("username", name );
-            UserRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
-            {
-                @Override
-                public void onComplete(@NonNull Task task)
-                {
-                    SendUsertoSportSlection();
+            if(mAuth.getCurrentUser() != null) {
+                HashMap userMap = new HashMap();
+                userMap.put("username", name);
+                UserRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        SendUsertoSportSlection();
 
-                }
-            });
+                    }
+                });
+            }
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>()
