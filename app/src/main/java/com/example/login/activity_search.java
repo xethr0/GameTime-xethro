@@ -33,7 +33,7 @@ public class activity_search extends AppCompatActivity {
         list.add("1v1 Tennis Match");
         list.add("Doubles Table Tennis Match");
         list.add("Basketball Pickup Game");
-        list.add("100m Race Event");
+        list.add("100m Race com.example.login.Event");
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         myList.setAdapter(adapter);
