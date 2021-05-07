@@ -90,11 +90,8 @@ public class Profile extends Fragment {
         Badminton.setText("Badminton Games: "+userInfo.get(4));
         Vollyball.setText("Vollyball Games: "+userInfo.get(5));
 
-        int sumgames = 0;
-        for(int i = 2; i < userInfo.size(); i++) {
-            sumgames += (int)userInfo.get(i);
-        }
-        TotalGames.setText("Total Matches Played: "+sumgames);
+        int gameSum = 0;
+        TotalGames.setText("Total Matches Played: "+ gameSum);
 
 
 

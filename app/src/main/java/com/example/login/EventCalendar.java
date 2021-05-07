@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.icu.util.Calendar;
 import android.icu.util.TimeZone;
 import android.os.Build;
@@ -42,6 +43,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
     Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
     ListView eventList;
     String[] events;
+    String eventDate;
     public EventCalendar() {
         // Required empty public constructor
     }
@@ -65,9 +67,12 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
     };
     private void updateLabel() {
         String myFormat = "EEE, d MMM yyyy"; //In which you need put here
+        String createEventDateFormat = "MM/dd/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        SimpleDateFormat mdy = new SimpleDateFormat(createEventDateFormat, Locale.US);
 
         _editText.setText(sdf.format(calendar.getTime()));
+        eventDate = mdy.format(calendar.getTime());
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,6 +102,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
                 Snackbar.make(view, "Create New Event", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent createNewEvent = new Intent(getActivity(), createEvent.class);
+                createNewEvent.putExtra("eventDate", eventDate);
                 startActivity(createNewEvent);
             }
         });
