@@ -100,18 +100,22 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
     }
 
     private void getEvents(String date){
-        eventAdapter.notifyDataSetChanged();
         eventArrayList.clear();
+        eventAdapter.notifyDataSetChanged();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("events");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                eventArrayList.clear();
+                eventAdapter.notifyDataSetChanged();
                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                     HashMap<String, String> hash_map = (HashMap<String, String>) userSnapshot.getValue();
                     System.out.println(hash_map.get("eventTitle"));
-                    eventArrayList.add(new Event(hash_map.get("date"), hash_map.get("address") , hash_map.get("sport"), hash_map.get("time"), hash_map.get("eventTitle")));
-                    eventAdapter.notifyDataSetChanged();
+                    if(hash_map.get("date").equals(date))
+                     eventArrayList.add(new Event(hash_map.get("date"), hash_map.get("address") , hash_map.get("sport"), hash_map.get("time"), hash_map.get("eventTitle")));
+
                 }
+                eventAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -160,6 +164,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
             }
         });
 
+
         this._editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -184,6 +189,10 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
                 }
             }
         });
+
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy");
+        String date = df.format(Calendar.getInstance().getTime());
+        _editText.setText(date);
         return view;
     }
 
