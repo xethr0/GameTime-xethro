@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private TextView Exsisting;
+    String currentUserID;
 
 
 
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        //currentUserID = mAuth.getCurrentUser().getUid();
+        FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
+        if(mFirebaseUser != null) {
+            currentUserID = mFirebaseUser.getUid(); //Do what you need to do with the id
+        }
+
         Exsisting = (TextView) findViewById(R.id.Loginlinks);
 
 
@@ -38,17 +45,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-            SendUserToLogin();
-
-    }
-
     private void SendUserToLogin()
     {
         Intent loginIntent = new Intent(MainActivity.this, Login.class);
         startActivity(loginIntent);
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser == null)
+        {
+            SendUserToLogin();
+
+    }
     }
 }

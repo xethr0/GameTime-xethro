@@ -102,17 +102,15 @@ public class Register extends AppCompatActivity {
         }
         else
         {
-            if(mAuth.getCurrentUser() != null) {
-                HashMap userMap = new HashMap();
-                userMap.put("username", name);
-                UserRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        SendUsertoSportSlection();
+            if(mAuth.getCurrentUser() != null)
+            {
 
-                    }
-                });
+
+                SendUsertoSportSlection();
+
             }
+
+        }
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>()
@@ -130,12 +128,14 @@ public class Register extends AppCompatActivity {
         }
 
 
-    }
+
     //sends user to the sports tab
     private void SendUsertoSportSlection()
     {
-        Intent sportselection = new Intent(Register.this, SportSelection.class);
+        Intent sportselection = new Intent(Register.this, SetupActivity.class);
         startActivity(sportselection);
+        sportselection.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        finish();
     }
 
     @Override
