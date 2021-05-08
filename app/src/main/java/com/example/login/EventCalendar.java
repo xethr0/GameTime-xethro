@@ -26,6 +26,8 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -57,12 +59,14 @@ import java.util.Queue;
 public class EventCalendar extends Fragment implements AdapterView.OnItemClickListener {
 
     EditText _editText;
+    TextView noItemText;
     Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
     String eventDate;
     private DatabaseReference userRef, eventRef;
     private RecyclerView eventRv;
     private ArrayList<Event> eventArrayList = new ArrayList<>();
     EventAdapter eventAdapter = new EventAdapter(getActivity(), eventArrayList);
+    private ProgressBar spinner;
 
     public EventCalendar() {
     }
@@ -103,6 +107,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
         eventArrayList.clear();
         eventAdapter.notifyDataSetChanged();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("events");
+        spinner.setVisibility(View.VISIBLE);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -116,11 +121,17 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
 
                 }
                 eventAdapter.notifyDataSetChanged();
+                if(eventArrayList.isEmpty()){
+                    noItemText.setVisibility(View.VISIBLE);
+
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -130,6 +141,8 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
         _editText = (EditText) view.findViewById(R.id.EventDate);
         FloatingActionButton fab = view.findViewById(R.id.addEventButton);
         eventRv = view.findViewById(R.id.EventListRecyclerView);
+        spinner = (ProgressBar)view.findViewById(R.id.progressBar1);
+        noItemText = view.findViewById(R.id.noItemTextView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,7 +196,10 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
                 DateFormat dfFormat = new SimpleDateFormat("MM/dd/yyyy");
                 try {
                     String val = dfFormat.format(dfParse.parse(String.valueOf(s)));
+                    noItemText.setVisibility(View.GONE);
                     getEvents(val);
+                    spinner.setVisibility(View.GONE);
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

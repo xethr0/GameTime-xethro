@@ -33,6 +33,29 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="45dp"
+            android:layout_height="55dp" />
+
+        <TextView
+            android:id="@+id/noItemTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:text="No event found"
+            android:layout_gravity="center_horizontal"
+            >
+
+        </TextView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/EventListRecyclerView"
             android:layout_width="match_parent"
