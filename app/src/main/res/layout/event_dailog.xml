@@ -5,52 +5,129 @@
 
 
 
-    <TextView
-        android:id="@+id/idEventLocationDialog"
+
+    <LinearLayout
+        android:id="@+id/l3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/event_name"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp" />
-    <TextView
-    android:id="@+id/idEventDateDialog"
-    android:layout_below="@id/idEventLocationDialog"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:text="@string/event_name"
-    android:textColor="@color/black"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:layout_marginLeft="10dp" />
-    <TextView
-    android:id="@+id/idEventTimeDialog"
-    android:layout_below="@id/idEventDateDialog"
-   android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:text="@string/event_name"
-    android:textColor="@color/black"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:layout_marginLeft="10dp" />
-    <TextView
-    android:id="@+id/idEventTypeDialog"
-     android:layout_below="@id/idEventTimeDialog"
-     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:text="@string/event_name"
-    android:textColor="@color/black"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/idEventLocationDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:text="HEllo"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="27dp">
+
+        </TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/l2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/l3"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/idEventDateDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="61dp"
+            android:text="HEllo"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="61dp">
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/l2"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/idEventTimeDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="58dp"
+            android:text="HEllo"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="58dp">
+
+        </TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/l1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold">
+        </TextView>
+        <TextView
+            android:id="@+id/idEventTypeDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:textColor="@color/black"
+            android:text="HEllo"
+            android:textSize="18sp"
+            android:layout_marginLeft="60dp">
+
+        </TextView>
+    </LinearLayout>
 
 </RelativeLayout>
