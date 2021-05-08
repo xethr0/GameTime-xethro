@@ -56,6 +56,7 @@ public class Register extends AppCompatActivity {
         CreateProfile.setOnClickListener(new View.OnClickListener()
         {
             @Override
+
             public void onClick(View v)
             {
                 CreateNewAccount();
@@ -83,7 +84,6 @@ public class Register extends AppCompatActivity {
     // checks the users inputs and meats parameteres.
     private void CreateNewAccount()
     {
-        String name = Fullname.getText().toString();
         String email = Email.getText().toString();
         String password = Password.getText().toString();
 
@@ -96,22 +96,34 @@ public class Register extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write your password...", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(name))
-        {
-            Toast.makeText(this, "Please wrtie your name...", Toast.LENGTH_SHORT).show();
-        }
         else
         {
-            if(mAuth.getCurrentUser() != null)
-            {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>()
+                        {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task)
+                            {
+                                if(task.isSuccessful())
+                                {
+                                    //create another method and call when the create button is complete and link it to the sport selection java
+                                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful())
+                                            {
+                                                SendUsertoSportSlection();
 
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        });
 
-                SendUsertoSportSlection();
-
-            }
 
         }
-
+/*
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>()
                     {
@@ -124,7 +136,7 @@ public class Register extends AppCompatActivity {
                                 SendUsertoSportSlection();
                             }
                         }
-                    });
+                    });*/
         }
 
 
@@ -134,8 +146,8 @@ public class Register extends AppCompatActivity {
     {
         Intent sportselection = new Intent(Register.this, SetupActivity.class);
         startActivity(sportselection);
-        sportselection.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        finish();
+        //sportselection.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //finish();
     }
 
     @Override

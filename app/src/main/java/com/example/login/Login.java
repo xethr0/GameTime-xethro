@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity
 
       if(TextUtils.isEmpty(email))
       {
-          Toast.makeText(this, "Please wrtie email", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this, "Please write email", Toast.LENGTH_SHORT).show();
       }
       else if(TextUtils.isEmpty(password))
       {

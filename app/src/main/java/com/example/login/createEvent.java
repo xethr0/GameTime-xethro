@@ -3,6 +3,7 @@ package com.example.login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +47,7 @@ public class createEvent extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         current_user_id = mAuth.getCurrentUser().getUid();
 
-        userRef = FirebaseDatabase.getInstance().getReference().child("users");
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         eventRef = FirebaseDatabase.getInstance().getReference().child("events");
 
         title = findViewById(R.id.etTitle);
@@ -112,7 +113,7 @@ public class createEvent extends AppCompatActivity {
             {
                 if(dataSnapshot.exists())
                 {
-                    String userFullName = dataSnapshot.child("fullName").getValue().toString();
+                    String userFullName = dataSnapshot.child("username").getValue().toString();
                     //String userProfileImage = dataSnapshot.child("profileimage").getValue().toString();
                     eventTitle = title.getText().toString();
                     eventDate = date.getText().toString();
@@ -127,7 +128,7 @@ public class createEvent extends AppCompatActivity {
                     eventMap.put("time", eventTime);
                     eventMap.put("address", eventAddress);
                     eventMap.put("sport", eventSport);
-                    eventMap.put("userFullName", userFullName);
+                    eventMap.put("username", userFullName);
                     eventRef.child(current_user_id + eventTitle).updateChildren(eventMap)
                             .addOnCompleteListener(new OnCompleteListener()
                             {
@@ -137,7 +138,7 @@ public class createEvent extends AppCompatActivity {
                                     if (task.isSuccessful())
                                     {
                                         Toast.makeText(createEvent.this, "New event has been posted.", Toast.LENGTH_SHORT).show();
-                                        finish();
+                                        sendUserToTabActivity();
                                     }
                                     else
                                     {
@@ -155,5 +156,11 @@ public class createEvent extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void sendUserToTabActivity()
+    {
+        Intent tabIntent = new Intent(createEvent.this, TabActivityMenu.class);
+        startActivity(tabIntent);
     }
 }

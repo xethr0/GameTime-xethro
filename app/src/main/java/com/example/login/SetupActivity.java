@@ -37,6 +37,7 @@ public class SetupActivity extends AppCompatActivity
 
     private EditText UserName, City, Age;
     private Button SaveProfileButton, baseball, football, soccer, basketball;
+    HashMap userMap = new HashMap();
    // private CircleImageView ProfileImage;
 
     private FirebaseAuth mAuth;
@@ -55,8 +56,8 @@ public class SetupActivity extends AppCompatActivity
         setContentView(R.layout.activity_setup);
 
         mAuth = FirebaseAuth.getInstance();
-        //currentUserID = mAuth.getCurrentUser().getUid();
-        FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
+        currentUserID = mAuth.getCurrentUser().getUid();
+        //FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
 
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
        // UserProfileImageRef = FirebaseStorage.getInstance().getReference().child("Profile Images");
@@ -71,7 +72,6 @@ public class SetupActivity extends AppCompatActivity
         basketball = (Button) findViewById(R.id.basketball);
         SaveProfileButton = (Button) findViewById(R.id.setup_create_pofile_button);
         //ProfileImage = (CircleImageView) findViewById(R.id.setup_profile_image);
-        HashMap userMap = new HashMap();
 
 
 
@@ -80,7 +80,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("sport", "I like a soccer.");
+                userMap.put("sport", "I like soccer.");
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -120,7 +120,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-             SaveAccountInformation();
+                SaveAccountInformation();
             }
         });
 
@@ -136,23 +136,22 @@ public class SetupActivity extends AppCompatActivity
         {
             Toast.makeText(this, "Please write your username...", Toast.LENGTH_SHORT).show();
         }
-        if(TextUtils.isEmpty(city))
+        else if (TextUtils.isEmpty(city))
         {
             Toast.makeText(this, "Please write your city...", Toast.LENGTH_SHORT).show();
         }
-        if(TextUtils.isEmpty(age))
+        else if (TextUtils.isEmpty(age))
         {
             Toast.makeText(this, "Please write your age...", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            HashMap userMap= new HashMap();
-            userMap.put("username", UserName);
-            userMap.put("city", City);
-            userMap.put("age", Age);
+            userMap.put("username", username);
+            userMap.put("city", city);
+            userMap.put("age", age);
             UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
-                public void onComplete(@NonNull @NotNull Task task)
+                public void onComplete(@NonNull Task task)
                 {
                     if(task.isSuccessful())
                     {
@@ -170,7 +169,7 @@ public class SetupActivity extends AppCompatActivity
     {
         Intent tabintent = new Intent(SetupActivity.this, TabActivityMenu.class);
         startActivity(tabintent);
-        finish();
+        //finish();
 
     }
 
