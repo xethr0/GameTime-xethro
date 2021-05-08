@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="16dp">
+
+
+
+    <TextView
+        android:id="@+id/idEventLocationDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/event_name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp" />
+    <TextView
+    android:id="@+id/idEventDateDialog"
+    android:layout_below="@id/idEventLocationDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:text="@string/event_name"
+    android:textColor="@color/black"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:layout_marginLeft="10dp" />
+    <TextView
+    android:id="@+id/idEventTimeDialog"
+    android:layout_below="@id/idEventDateDialog"
+   android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:text="@string/event_name"
+    android:textColor="@color/black"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:layout_marginLeft="10dp" />
+    <TextView
+    android:id="@+id/idEventTypeDialog"
+     android:layout_below="@id/idEventTimeDialog"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:text="@string/event_name"
+    android:textColor="@color/black"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:layout_marginLeft="10dp" />
+
+</RelativeLayout>
