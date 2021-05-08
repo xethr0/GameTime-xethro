@@ -1,22 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".GameFeed">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     android:layout_marginBottom="4dp"
+     android:layout_marginLeft="10dp"
+     android:layout_marginTop="10dp"
+     android:layout_marginRight="10dp"
+     >
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="1dp"
+         android:padding="5dp"
+         android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="107dp"
-        android:layout_height="68dp"
-        android:layout_gravity="center"
-        android:text="Button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile Name"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:textAlignment="textStart"
+                android:gravity="start"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black">
+
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                android:padding="2dp">
+                <TextView
+                    android:id="@+id/feedPostText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="posted an event"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="13dp"
+                    android:textStyle="bold">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/feedPostDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textColor="@android:color/black"
+                    android:textSize="13dp">
+
+                </TextView>
+                <TextView
+                    android:id="@+id/feedPostTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textColor="@android:color/black"
+                    android:textSize="13dp">
+
+                </TextView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+     </LinearLayout>
+
+     <TextView
+         android:id="@+id/postDescription"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="3dp"
+         android:layout_marginRight="3dp"
+         android:text="post description..."
+         android:padding="3dp"
+         android:textSize="28sp"
+         android:textColor="@android:color/black">
+     </TextView>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="212dp"
+         android:orientation="vertical">
+         <TextView
+             android:id="@+id/EventPostInfo_EventTitle"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_margin="3dp"
+             android:text="Event Title"
+             android:textSize="20sp"
+             android:textColor="@android:color/black"
+
+             >
+         </TextView>
+         <TextView
+             android:id="@+id/EventPostInfo_EventDate"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_margin="3dp"
+             android:text="Event Date"
+             android:textSize="20sp"
+             android:textColor="@android:color/black"
+
+             >
+         </TextView>
+         <TextView
+             android:id="@+id/EventPostInfo_EventTime"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_margin="3dp"
+             android:text="Event Time"
+             android:textSize="20sp"
+             android:textColor="@android:color/black"
+             >
+         </TextView>
+         <TextView
+             android:id="@+id/EventPostInfo_EventLocation"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"
+             android:layout_margin="3dp"
+             android:text="Event Location"
+             android:textSize="20sp"
+             android:textColor="@android:color/black"
+             >
+         </TextView>
+
+     </LinearLayout>
+
+
+ </LinearLayout>
+</RelativeLayout>
