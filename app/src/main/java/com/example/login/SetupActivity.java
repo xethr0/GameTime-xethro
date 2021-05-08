@@ -80,7 +80,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("sport", "I like soccer.");
+                userMap.put("Soccer", "Soccer.");
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -90,7 +90,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("sport", "I like football");
+                userMap.put("Football", "Football");
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -100,7 +100,7 @@ public class SetupActivity extends AppCompatActivity
         @Override
         public void onClick(View v)
             {
-                userMap.put("sport", "I like basketball");
+                userMap.put("Basketball", "Basketball");
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -110,7 +110,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("sport", "I like baseball");
+                userMap.put("Baseball", "Baseball");
                 UsersRef.updateChildren(userMap);
             }
         });
