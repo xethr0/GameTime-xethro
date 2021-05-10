@@ -49,6 +49,7 @@ public class activity_search extends AppCompatActivity {
             public void onClick(View v) {
 
                 String searchText = mySearch.getText().toString();
+                //System.out.println(searchText);
                 firebaseEventSearch(searchText);
             }
         });
@@ -60,7 +61,7 @@ public class activity_search extends AppCompatActivity {
 
         Query firebaseSearchQuery = myEventDB.orderByChild("eventTitle").startAt(searchText).endAt(searchText + "\uf8ff");
 
-        FirebaseRecyclerOptions<Events> options = new FirebaseRecyclerOptions.Builder<Events>().setQuery(myEventDB, Events.class).build();
+        FirebaseRecyclerOptions<Events> options = new FirebaseRecyclerOptions.Builder<Events>().setQuery(firebaseSearchQuery, Events.class).build();
         FirebaseRecyclerAdapter<Events, EventsViewHolder> firerecycleadapter = new FirebaseRecyclerAdapter<Events, EventsViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull EventsViewHolder holder, int position, @NonNull @NotNull Events model) {
