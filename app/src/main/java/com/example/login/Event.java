@@ -6,13 +6,17 @@ public class Event {
     private String sportType;
     private String time;
     private String title;
+    private String uid;
+    private String eventKey;
 
-    public Event(String date, String location, String sportType, String time, String title) {
+    public Event(String date, String location, String sportType, String time, String title, String uid, String eventKey) {
         this.date = date;
         this.location = location;
         this.sportType = sportType;
         this.time = time;
         this.title = title;
+        this.uid = uid;
+        this.eventKey = eventKey;
     }
 
     public String getDate() {
@@ -54,6 +58,14 @@ public class Event {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getUid() { return uid; }
+
+    public void setUid(String uid) { this.uid = uid; }
+
+    public String getEventKey() { return eventKey; }
+
+    public void setEventKey(String eventKey) { this.eventKey = eventKey; }
 
     @Override
     public String toString() {
