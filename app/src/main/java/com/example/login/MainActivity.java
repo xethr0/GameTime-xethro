@@ -10,7 +10,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private FirebaseAuth mAuth;
     private TextView Exsisting;
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //currentUserID = mAuth.getCurrentUser().getUid();
         FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
-        if(mFirebaseUser != null) {
+        if(mFirebaseUser != null)
+        {
             currentUserID = mFirebaseUser.getUid(); //Do what you need to do with the id
         }
 

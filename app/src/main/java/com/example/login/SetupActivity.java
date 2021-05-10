@@ -45,6 +45,10 @@ public class SetupActivity extends AppCompatActivity
    // private StorageReference UserProfileImageRef;
     String currentUserID;
     final static int Gallery_Pick = 1;
+    static int baseballstat = 0;
+    static int basketballstat = 0;
+    static int footballstat = 0;
+    static int soccerstat = 0;
 
 
 
@@ -80,7 +84,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("Soccer", "Soccer.");
+                userMap.put("Soccer", soccerstat);
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -90,7 +94,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("Football", "Football");
+                userMap.put("Football", footballstat);
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -100,7 +104,7 @@ public class SetupActivity extends AppCompatActivity
         @Override
         public void onClick(View v)
             {
-                userMap.put("Basketball", "Basketball");
+                userMap.put("Basketball", basketballstat);
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -110,7 +114,7 @@ public class SetupActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                userMap.put("Baseball", "Baseball");
+                userMap.put("Baseball", baseballstat);
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -149,7 +153,8 @@ public class SetupActivity extends AppCompatActivity
             userMap.put("username", username);
             userMap.put("city", city);
             userMap.put("age", age);
-            UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
+            UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
+            {
                 @Override
                 public void onComplete(@NonNull Task task)
                 {
