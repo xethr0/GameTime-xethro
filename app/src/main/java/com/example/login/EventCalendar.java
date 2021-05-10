@@ -68,6 +68,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
     EventAdapter eventAdapter = new EventAdapter(getActivity(), eventArrayList);
     private ProgressBar spinner;
 
+
     public EventCalendar() {
     }
 
@@ -101,6 +102,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     private void getEvents(String date){
@@ -115,9 +117,10 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
                 eventAdapter.notifyDataSetChanged();
                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                     HashMap<String, String> hash_map = (HashMap<String, String>) userSnapshot.getValue();
+                    final String eventKey = userSnapshot.getRef().getKey();
                     System.out.println(hash_map.get("eventTitle"));
                     if(hash_map.get("date").equals(date))
-                     eventArrayList.add(new Event(hash_map.get("date"), hash_map.get("address") , hash_map.get("sport"), hash_map.get("time"), hash_map.get("eventTitle")));
+                     eventArrayList.add(new Event(hash_map.get("date"), hash_map.get("address") , hash_map.get("sport"), hash_map.get("time"), hash_map.get("eventTitle"), hash_map.get("uid"), eventKey));
 
                 }
                 eventAdapter.notifyDataSetChanged();
