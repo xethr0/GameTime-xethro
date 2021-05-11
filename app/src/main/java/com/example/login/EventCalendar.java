@@ -26,6 +26,8 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,17 +56,21 @@ import java.util.Queue;
  * create an instance of this fragment.
  */
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class EventCalendar extends Fragment implements AdapterView.OnItemClickListener {
+public class EventCalendar extends Fragment{
 
     EditText _editText;
+    TextView noItemText;
     Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
     String eventDate;
     private DatabaseReference userRef, eventRef;
     private RecyclerView eventRv;
     private ArrayList<Event> eventArrayList = new ArrayList<>();
     EventAdapter eventAdapter = new EventAdapter(getActivity(), eventArrayList);
+    private ProgressBar spinner;
 
-    public EventCalendar() {
+
+    public EventCalendar()
+    {
     }
 
     public static EventCalendar newInstance(String param1, String param2) {
@@ -94,44 +100,69 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
         eventDate = mdy.format(calendar.getTime());
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+
 
     }
 
-    private void getEvents(String date){
+    private void getEvents(String date)
+    {
         eventArrayList.clear();
         eventAdapter.notifyDataSetChanged();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("events");
-        reference.addValueEventListener(new ValueEventListener() {
+        spinner.setVisibility(View.VISIBLE);
+        reference.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
                 eventArrayList.clear();
                 eventAdapter.notifyDataSetChanged();
-                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                for (DataSnapshot userSnapshot : snapshot.getChildren())
+                {
                     HashMap<String, String> hash_map = (HashMap<String, String>) userSnapshot.getValue();
+                    final String eventKey = userSnapshot.getRef().getKey();
                     System.out.println(hash_map.get("eventTitle"));
                     if(hash_map.get("date").equals(date))
-                     eventArrayList.add(new Event(hash_map.get("date"), hash_map.get("address") , hash_map.get("sport"), hash_map.get("time"), hash_map.get("eventTitle")));
+                     eventArrayList.add(new Event(hash_map.get("date"), hash_map.get("address") , hash_map.get("sport"), hash_map.get("time"), hash_map.get("eventTitle"), hash_map.get("uid"), eventKey));
 
                 }
                 eventAdapter.notifyDataSetChanged();
+                if(eventArrayList.isEmpty())
+                {
+
+                    noItemText.setVisibility(View.VISIBLE);
+
+                }else {
+                    noItemText.setVisibility(View.GONE);
+                    spinner.setVisibility(View.GONE);
+
+                }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error)
+            {
             }
         });
+
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
 
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         _editText = (EditText) view.findViewById(R.id.EventDate);
         FloatingActionButton fab = view.findViewById(R.id.addEventButton);
         eventRv = view.findViewById(R.id.EventListRecyclerView);
+        spinner = (ProgressBar)view.findViewById(R.id.progressBar1);
+        noItemText = view.findViewById(R.id.noItemTextView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Create New com.example.login.Event", Snackbar.LENGTH_LONG)
@@ -141,21 +172,24 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
                 startActivity(createNewEvent);
             }
         });
-        eventAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+        eventAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(int position)
+            {
                 System.out.println(position);
                 openDialog(position);
-//                Snackbar.make(view, position, Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+
             }
         });
         eventRv.setLayoutManager(linearLayoutManager);
         eventRv.setAdapter(eventAdapter);
-        this._editText.setOnClickListener(new View.OnClickListener() {
+        this._editText.setOnClickListener(new View.OnClickListener()
+        {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
 
                 new DatePickerDialog(getActivity(), date, calendar
                         .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
@@ -164,26 +198,37 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
             }
         });
 
+//        if(!eventArrayList.isEmpty() || eventRv.getChildCount() != 0) {
+//            noItemText.setVisibility(View.GONE);
+//
+//        }
 
-        this._editText.addTextChangedListener(new TextWatcher() {
+        this._editText.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
 
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(Editable s)
+            {
                 System.out.println(s);
                 DateFormat dfParse = new SimpleDateFormat("EEE, d MMM yyyy");
                 DateFormat dfFormat = new SimpleDateFormat("MM/dd/yyyy");
                 try {
                     String val = dfFormat.format(dfParse.parse(String.valueOf(s)));
+                    noItemText.setVisibility(View.GONE);
                     getEvents(val);
+                    spinner.setVisibility(View.GONE);
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -196,15 +241,10 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
         return view;
     }
 
-    private void openDialog(int position) {
+    private void openDialog(int position)
+    {
         EventDialog eventDialog =  new EventDialog(eventArrayList.get(position));
         eventDialog.show(getFragmentManager(),"Event");
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String event  = parent.getItemAtPosition(position).toString();
-        Snackbar.make(view, event, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
 }

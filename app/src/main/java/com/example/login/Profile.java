@@ -65,33 +65,33 @@ public class Profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.activity_profile, container, false);
 
-        userInfo.add("Redhwan Ahmed"); //Name
-        userInfo.add("I like Computer Science and I am also super cool."); //bio
-        userInfo.add(12); //Matches of BBall
-        userInfo.add(144); //Matches of Soccer
-        userInfo.add(50); //Badminton
-        userInfo.add(43); //Volleyball
-
-
-        TextView Name = (TextView) view.findViewById(R.id.Name);
-        TextView bio = (TextView) view.findViewById(R.id.UserBio);
-        TextView Bball = (TextView) view.findViewById(R.id.BasketballGames);
-        TextView Soccer = (TextView) view.findViewById(R.id.soccer);
-        TextView Badminton = (TextView) view.findViewById(R.id.Badminton);
-        TextView Vollyball = (TextView) view.findViewById(R.id.Vollyball);
-        TextView TotalGames = (TextView) view.findViewById(R.id.totalMatches);
-
-        Name.setText(""+userInfo.get(0));
-        bio.setText(""+userInfo.get(1));
-        Bball.setText("Basketball Games: "+userInfo.get(2));
-        Soccer.setText("Soccer Games: "+userInfo.get(3));
-        Badminton.setText("Badminton Games: "+userInfo.get(4));
-        Vollyball.setText("Vollyball Games: "+userInfo.get(5));
-
-        int gameSum = 0;
-        TotalGames.setText("Total Matches Played: "+ gameSum);
+//        userInfo.add("Redhwan Ahmed"); //Name
+//        userInfo.add("I like Computer Science and I am also super cool."); //bio
+//        userInfo.add(12); //Matches of BBall
+//        userInfo.add(144); //Matches of Soccer
+//        userInfo.add(50); //Badminton
+//        userInfo.add(43); //Volleyball
+//
+//
+//        TextView Name = (TextView) view.findViewById(R.id.Name);
+//        TextView bio = (TextView) view.findViewById(R.id.UserBio);
+//        TextView Bball = (TextView) view.findViewById(R.id.BasketballGames);
+//        TextView Soccer = (TextView) view.findViewById(R.id.soccer);
+//        TextView Badminton = (TextView) view.findViewById(R.id.Badminton);
+//        TextView Vollyball = (TextView) view.findViewById(R.id.Vollyball);
+//        TextView TotalGames = (TextView) view.findViewById(R.id.totalMatches);
+//
+//        Name.setText(""+userInfo.get(0));
+//        bio.setText(""+userInfo.get(1));
+//        Bball.setText("Basketball Games: "+userInfo.get(2));
+//        Soccer.setText("Soccer Games: "+userInfo.get(3));
+//        Badminton.setText("Badminton Games: "+userInfo.get(4));
+//        Vollyball.setText("Vollyball Games: "+userInfo.get(5));
+//
+//        int gameSum = 0;
+//        TotalGames.setText("Total Matches Played: "+ gameSum);
 
 
 

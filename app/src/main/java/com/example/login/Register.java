@@ -22,7 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class Register extends AppCompatActivity {
+public class Register extends AppCompatActivity
+{
 
     private FirebaseAuth mAuth;
     private  TextView Exsisting;
@@ -35,7 +36,8 @@ public class Register extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
@@ -123,21 +125,8 @@ public class Register extends AppCompatActivity {
 
 
         }
-/*
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>()
-                    {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task)
-                        {
-                            if(task.isSuccessful())
-                            {
-                                //create another method and call when the create button is complete and link it to the sport selection java
-                                SendUsertoSportSlection();
-                            }
-                        }
-                    });*/
-        }
+
+    }
 
 
 
