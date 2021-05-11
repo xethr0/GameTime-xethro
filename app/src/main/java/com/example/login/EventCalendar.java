@@ -56,7 +56,7 @@ import java.util.Queue;
  * create an instance of this fragment.
  */
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class EventCalendar extends Fragment implements AdapterView.OnItemClickListener {
+public class EventCalendar extends Fragment{
 
     EditText _editText;
     TextView noItemText;
@@ -174,8 +174,7 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
             {
                 System.out.println(position);
                 openDialog(position);
-//                Snackbar.make(view, position, Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+
             }
         });
         eventRv.setLayoutManager(linearLayoutManager);
@@ -239,11 +238,4 @@ public class EventCalendar extends Fragment implements AdapterView.OnItemClickLi
         eventDialog.show(getFragmentManager(),"Event");
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-    {
-        String event  = parent.getItemAtPosition(position).toString();
-        Snackbar.make(view, event, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
 }
