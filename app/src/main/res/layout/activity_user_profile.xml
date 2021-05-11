@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.108" />
 
     <TextView
-        android:id="@+id/UserBio"
+        android:id="@+id/UserAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"
@@ -59,7 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserBio"
+        app:layout_constraintTop_toBottomOf="@+id/UserAge"
         app:layout_constraintVertical_bias="0.038" />
 
     <TextView
@@ -85,14 +85,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Badminton"
+        app:layout_constraintTop_toBottomOf="@+id/Football"
         app:layout_constraintVertical_bias="0.05" />
 
     <TextView
-        android:id="@+id/Badminton"
+        android:id="@+id/Football"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Badminton"
+        android:text="Football"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,10 +102,10 @@
         app:layout_constraintVertical_bias="0.042" />
 
     <TextView
-        android:id="@+id/Vollyball"
+        android:id="@+id/Baseball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volleyball"
+        android:text="Baseball"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +123,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Vollyball"
+        app:layout_constraintTop_toBottomOf="@+id/Baseball"
         app:layout_constraintVertical_bias="0.106" />
 </androidx.constraintlayout.widget.ConstraintLayout>

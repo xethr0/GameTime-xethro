@@ -12,8 +12,6 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
-
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,7 +50,6 @@ public class SetupActivity extends AppCompatActivity
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -85,6 +82,7 @@ public class SetupActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 userMap.put("Soccer", soccerstat);
+                UserProfile.socc = soccerstat;
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -95,6 +93,7 @@ public class SetupActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 userMap.put("Football", footballstat);
+                UserProfile.fBall = footballstat;
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -105,6 +104,7 @@ public class SetupActivity extends AppCompatActivity
         public void onClick(View v)
             {
                 userMap.put("Basketball", basketballstat);
+                UserProfile.bBall = basketballstat;
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -115,6 +115,7 @@ public class SetupActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 userMap.put("Baseball", baseballstat);
+                UserProfile.baseBall = baseballstat;
                 UsersRef.updateChildren(userMap);
             }
         });
@@ -151,8 +152,11 @@ public class SetupActivity extends AppCompatActivity
         else
         {
             userMap.put("username", username);
+            UserProfile.UserName = username;
             userMap.put("city", city);
+            UserProfile.city = city;
             userMap.put("age", age);
+            UserProfile.age = age;
             UsersRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener()
             {
                 @Override
