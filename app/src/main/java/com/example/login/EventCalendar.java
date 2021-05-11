@@ -132,7 +132,12 @@ public class EventCalendar extends Fragment{
                 eventAdapter.notifyDataSetChanged();
                 if(eventArrayList.isEmpty())
                 {
+
                     noItemText.setVisibility(View.VISIBLE);
+
+                }else {
+                    noItemText.setVisibility(View.GONE);
+                    spinner.setVisibility(View.GONE);
 
                 }
             }
@@ -193,6 +198,10 @@ public class EventCalendar extends Fragment{
             }
         });
 
+//        if(!eventArrayList.isEmpty() || eventRv.getChildCount() != 0) {
+//            noItemText.setVisibility(View.GONE);
+//
+//        }
 
         this._editText.addTextChangedListener(new TextWatcher()
         {
