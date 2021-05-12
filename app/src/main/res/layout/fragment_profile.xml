@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="USER PROFILE"
-        android:textColor="#004160"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/profile_background">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/nav_profile_image"
+            android:layout_width="180dp"
+            android:layout_height="172dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="117dp"
+            android:layout_marginLeft="117dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="113dp"
+            android:layout_marginRight="113dp"
+            android:layout_marginBottom="51dp"
+            android:src="@drawable/profile" />
+
+
+
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="305dp"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -40,7 +56,8 @@
         android:id="@+id/UserAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="345dp"
         android:text="Profile"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +71,12 @@
         android:id="@+id/textView4"
         android:layout_width="112dp"
         android:layout_height="26dp"
-        android:layout_marginTop="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="391dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginRight="148dp"
         android:text="GAME STATS"
         android:textColor="#1C0030"
         android:textSize="18sp"
@@ -69,7 +91,8 @@
         android:id="@+id/BasketballGames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="445dp"
         android:text="bball"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,12 +106,13 @@
         android:id="@+id/soccer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="275dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="485dp"
         android:text="soccer"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Football"
         app:layout_constraintVertical_bias="0.05" />
@@ -97,7 +121,8 @@
         android:id="@+id/Football"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="525dp"
         android:text="Badminton"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +136,8 @@
         android:id="@+id/Baseball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="325dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="565dp"
         android:text="Volleyball"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,7 +151,8 @@
         android:id="@+id/totalMatches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="605dp"
         android:text="TotalMatches"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -133,4 +160,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Baseball"
         app:layout_constraintVertical_bias="0.106" />
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="359dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginRight="101dp"
+        android:layout_marginBottom="397dp"
+        android:text="USER PROFILE"
+        android:textColor="#004160"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+
+</RelativeLayout>
