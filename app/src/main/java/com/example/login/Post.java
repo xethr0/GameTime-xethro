@@ -47,12 +47,12 @@ public class Post {
         this.username = username;
     }
 
-    public String getEventDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setEventDate(String eventDate) {
-        this.date = eventDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String gettime() {

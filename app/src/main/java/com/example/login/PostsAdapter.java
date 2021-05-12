@@ -57,7 +57,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             holder.description.setText(post.getSport());
         }
         holder.eventTitle.setText(post.getEventTitle());
-        holder.eventDate.setText(post.getEventDate());
+        holder.eventDate.setText(post.getDate());
         holder.eventTime.setText(post.gettime());
         holder.eventLocation.setText(post.getAddress());
 
@@ -94,8 +94,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Users users = snapshot.getValue(Users.class);
-                postUsername.setText(users.getUsername());
-
+                if (users != null){
+                    postUsername.setText(users.getUsername());
+                }
             }
 
             @Override
