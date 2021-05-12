@@ -25,9 +25,11 @@ import org.jetbrains.annotations.NotNull;
  * create an instance of this fragment.
  */
 public class Profile extends Fragment {
-    private FirebaseUser user;
+    private FirebaseDatabase mdb;
+    private FirebaseAuth auth;
     private DatabaseReference reff;
     private String userID;
+    private UserProfile info;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,6 +64,8 @@ public class Profile extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -75,13 +79,14 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        auth = FirebaseAuth.getInstance();
+        mdb = FirebaseDatabase.getInstance();
 
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reff = FirebaseDatabase.getInstance().getReference("Users");
+        FirebaseUser user = auth.getCurrentUser();
         userID = user.getUid();
-
+        info = new UserProfile();
+        reff = mdb.getReference().child("Users").child(userID);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         TextView Name = (TextView) view.findViewById(R.id.Name);
         TextView bio = (TextView) view.findViewById(R.id.UserAge);
@@ -91,28 +96,38 @@ public class Profile extends Fragment {
         TextView Baseball = (TextView) view.findViewById(R.id.Baseball);
         TextView TotalGames = (TextView) view.findViewById(R.id.totalMatches);
 
-        reff.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                Name.setText(UserProfile.UserName);
-                bio.setText("Lives in "+UserProfile.city+" and is "+UserProfile.age+" years old.");
-                Bball.setText("Basketball: "+UserProfile.bBall);
-                Soccer.setText("Soccer: "+UserProfile.socc);
-                Football.setText("Football: "+UserProfile.fBall);
-                Baseball.setText("Baseball: "+UserProfile.baseBall);
+                snapshotData(snapshot);
+                Name.setText(info.username);
+                bio.setText("Lives in "+info.city+" and is "+info.age+" years old.");
+                Bball.setText("Basketball: "+info.Basketball);
+                Soccer.setText("Soccer: "+info.Soccer);
+                Football.setText("Football: "+info.Football);
+                Baseball.setText("Baseball: "+info.Baseball);
+                int gameSum = info.Baseball+info.Football+info.Soccer+info.Basketball;
+                TotalGames.setText("Total Matches Played: "+ gameSum);
+
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                bio.setText("Error");
+
             }
         });
 
-        int gameSum = 0;
-        TotalGames.setText("Total Matches Played: "+ gameSum);
+
+
+
+
 
 
 
         return view;
+    }
+
+    private void snapshotData (DataSnapshot ds) {
+        info = ds.getValue(UserProfile.class);
     }
 }
